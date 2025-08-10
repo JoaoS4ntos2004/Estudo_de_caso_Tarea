@@ -12,7 +12,7 @@ st.caption("Extração • Classificação • Busca • Chat (LLM opcional)")
 
 with st.sidebar:
     st.header("Índice")
-    st.write("1) Coloque seus PDFs em `data/pdfs/`")
+    st.write("1) Coloque seus PDFs em `dados/`")
     if st.button("🏗️ (Re)Construir índice"):
         with st.spinner("Executando pipeline..."):
             proc = subprocess.run(["python", "build_index.py"], capture_output=True, text=True)

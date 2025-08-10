@@ -6,15 +6,13 @@ Aplicação **local** para:
 3) Realizar **busca semântica** em linguagem natural  
 4) Interagir com um **LLM local** para dúvidas/resumos usando o contexto dos PDFs
 
-> Requisitos do roteiro atendidos: extração, classificação, busca por linguagem natural, chat com LLM (preferencial). 
-
 
 ## 🧩 Stack
 - **Extração**: [PyMuPDF]
 - **Classificação**: regras + (opcional) modelo TF-IDF `scikit-learn`
 - **Busca**: `sentence-transformers` (**all-MiniLM-L6-v2**) + `FAISS`
 - **UI**: `Streamlit`
-- **LLM (opcional)**: `gpt4all` **OU** `llama-cpp-python` (se instalado)
+- **LLM**: `gpt4all` **OU** `llama-cpp-python` (se instalado)
 
 > Se você não tiver um LLM local, o chat ainda funciona em **modo extrativo** (concatena trechos recuperados e gera uma resposta objetiva).
 
@@ -24,9 +22,9 @@ Aplicação **local** para:
 > Requer Python 3.10+
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requerimentos.txt
 ```
 
 ### Modelos
@@ -34,7 +32,7 @@ pip install -r requirements.txt
   (se preferir, baixe antes e aponte via variável `SENTENCE_TRANSFORMERS_HOME`).
 
 ### LLM local (opcional)
-Escolha **um** (ou ignore):
+Escolha **um**:
 - `pip install gpt4all`
   - Baixe um modelo `.gguf` pelo app do gpt4all e aponte `GPT4ALL_MODEL_PATH=/caminho/modelo.gguf`
 - `pip install llama-cpp-python`
@@ -60,7 +58,7 @@ case_estudo_pdf_app/
 
 ## ▶️ Como usar
 
-1. **Coloque os PDFs** em `data/pdfs/`
+1. **Coloque os PDFs** em `dados/`
 2. **Crie/atualize o índice** (texto, classificação, embeddings):
 ```bash
 python build_index.py
