@@ -14,10 +14,13 @@ with st.sidebar:
     st.header("Índice")
     st.write("1) Coloque seus PDFs em `dados/`")
     if st.button("🏗️ (Re)Construir índice"):
-        with st.spinner("Executando pipeline..."):
-            proc = subprocess.run(["python", "build_index.py"], capture_output=True, text=True)
-            st.code(proc.stdout + "\n" + proc.stderr)
-        st.success("Pipeline concluído!")
+        with st.spinner("Extraindo, classificando e indexando..."):
+            code = os.system("python build_index.py")
+            if code == 0:
+                st.success("Índice reconstruído com sucesso!")
+            else:
+                st.error("Falha ao reconstruir o índice. Veja o log no terminal.")
+
 
 st.subheader("🔎 Busca em linguagem natural")
 query = st.text_input("Escreva sua pergunta", placeholder="Ex.: Quais são os princípios da educação da LDB?")
