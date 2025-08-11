@@ -11,21 +11,18 @@ TEMPLATE = (
 )
 
 def _format_context(results: List[Dict], max_chars: int = 2000) -> str:
-    ctxs = []
-    total = 0
+    ctxs, total = [], 0
     for r in results:
         frag = f"[{r['file_name']} | {r['tipo_documento']}] {r['text']}"
         if total + len(frag) > max_chars:
             break
         ctxs.append(frag)
         total += len(frag)
-    return "\n---\n".join(ctxs)
+    return "\n---\n".join(ctxs) if ctxs else "(sem trechos relevantes)"
 
 def answer_with_fallback(query: str, results: List[Dict]) -> str:
-    if not results:
-        return "Não encontrei contexto suficiente para responder. Tente refinar sua pergunta."
-    ctx = _format_context(results)
-    return TEMPLATE.format(query=query, contexts=ctx)
+    contexts = _format_context(results)
+    return TEMPLATE.format(query=query, contexts=contexts)
 
 def try_local_llm(prompt: str) -> str:
     gpt4all_path = os.getenv("GPT4ALL_MODEL_PATH")
@@ -43,7 +40,8 @@ def try_local_llm(prompt: str) -> str:
             from llama_cpp import Llama
             llm = Llama(model_path=llama_path, n_ctx=4096)
             out = llm(prompt=prompt, max_tokens=400)
-            return out.get("choices",[{}])[0].get("text","").strip() or prompt
+            return out.get("choices", [{}])[0].get("text", "").strip() or prompt
         except Exception as e:
             return f"[Aviso] llama-cpp falhou: {e}\n\n{prompt}"
+    # Sem LLM local → devolve o prompt (resposta extrativa/sintética)
     return prompt
