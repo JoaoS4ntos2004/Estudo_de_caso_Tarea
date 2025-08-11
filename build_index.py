@@ -1,6 +1,6 @@
-from src.extract_text import run_extract
-from src.classify import add_classification
-from src.index_search import build_index
+from src.extração import run_extract
+from src.classificação import add_classification
+from src.busca_index import build_index
 
 if __name__ == "__main__":
     run_extract("dados/", ".index/raw_text.jsonl")
