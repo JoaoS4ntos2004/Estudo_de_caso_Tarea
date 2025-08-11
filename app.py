@@ -1,7 +1,7 @@
 
 import os
 import streamlit as st
-from src.index_search import search
+from src.busca_index.py import search
 from src.chat_llm import answer_with_fallback, try_local_llm
 import subprocess
 
