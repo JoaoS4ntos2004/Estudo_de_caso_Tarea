@@ -1,5 +1,5 @@
-from src.extração import run_extract
-from src.classificação import add_classification
+from src.extracao import run_extract
+from src.classificacao import add_classification
 from src.busca_index import build_index
 
 if __name__ == "__main__":
