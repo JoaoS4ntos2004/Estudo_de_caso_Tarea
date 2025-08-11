@@ -81,7 +81,3 @@ python search_cli.py "Quais são os princípios da educação segundo a LDB?"
 ## 🧪 Notas
 - A classificação inicial usa **regras simples** (rápidas e transparentes). Se quiser, ative o modo ML no `classify.py`.
 - O chat sempre tenta recuperar trechos relevantes primeiro (**RAG**). Se não houver LLM, a resposta é **sintética extrativa**.
-
-## 📚 Referências (dos arquivos enviados)
-- Roteiro: “Estudo de Caso”【19†source】
-- Exemplo de PDF: “Lei 9.394/1996 (LDB)”【20†source】
