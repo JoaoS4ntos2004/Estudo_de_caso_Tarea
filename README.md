@@ -69,7 +69,7 @@ streamlit run app.py
 ```
 4. **Buscar pelo CLI (opcional)**:
 ```bash
-python search_cli.py "Quais são os princípios da educação segundo a LDB?"
+python busca.py "Quais são os princípios da educação segundo a LDB?"
 ```
 
 ## ⚙️ Variáveis de ambiente (opcional)
@@ -79,5 +79,5 @@ python search_cli.py "Quais são os princípios da educação segundo a LDB?"
 - `INDEX_DIR` (default: `.index`)
 
 ## 🧪 Notas
-- A classificação inicial usa **regras simples** (rápidas e transparentes). Se quiser, ative o modo ML no `classify.py`.
+- A classificação inicial usa **regras simples** (rápidas e transparentes). Se quiser, ative o modo ML no `classificação.py`.
 - O chat sempre tenta recuperar trechos relevantes primeiro (**RAG**). Se não houver LLM, a resposta é **sintética extrativa**.
