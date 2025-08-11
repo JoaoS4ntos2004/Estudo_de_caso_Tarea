@@ -46,7 +46,12 @@ def build_index(in_jsonl: str, index_dir: str = ".index") -> None:
     df.to_parquet(df_path, index=False)
 
     model = SentenceTransformer(DEFAULT_MODEL)
-    embs = model.encode(df["text"].tolist(), batch_size=64, show_progress_bar=True, convert_to_numpy=True, normalize_embeddings=True)
+    embs = model.encode(
+    df["text"].tolist(),
+    batch_size=64,
+    show_progress_bar=True,
+    convert_to_numpy=True,
+    normalize_embeddings=True)
     dim = embs.shape[1]
     index = faiss.IndexFlatIP(dim)
     index.add(embs.astype(np.float32))
