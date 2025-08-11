@@ -1,5 +1,5 @@
 import sys
-from src.index_search import search
+from src.busca_index import search
 from src.chat_llm import answer_with_fallback, try_local_llm
 
 def main():
